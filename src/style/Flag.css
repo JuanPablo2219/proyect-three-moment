@@ -1,0 +1,37 @@
+/* Flag.css */
+.flag {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  border: 1px solid #000;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.stripe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.yellow {
+  background-color: #FFD100;
+}
+
+.blue {
+  background-color: #005CBF;
+  transform: scale(0.6);
+  top: 1%;
+}
+
+.red {
+  background-color: #EF3340;
+  transform: scale(0.3);
+  top: 2%;
+}
+
+.firstContainer {
+  display: grid;
+  place-content: center;
+  margin-top: 18%;
+}
