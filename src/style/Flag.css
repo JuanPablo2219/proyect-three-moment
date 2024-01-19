@@ -6,6 +6,12 @@
   border: 1px solid #000;
   cursor: pointer;
   overflow: hidden;
+
+}
+
+body {
+  background-color: #000;
+
 }
 
 .stripe {
