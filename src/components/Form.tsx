@@ -1,43 +1,46 @@
 import  { useState } from "react";
-import "../style/CharacterSats.css";
 import { InputText } from 'primereact/inputtext';
-        
+import "primereact/resources/themes/lara-light-cyan/theme.css";
 
+import "../style/CharacterSats.css"; 
 
 export default function CharacterSats() {
   const storedData = localStorage.getItem("characterSats");
-  const initialCharacterSats = storedData ? JSON.parse(storedData) : {
-    name: "Gandalf",
-    strength: 10,
-    intelligent: "18",
-    charisma: 16,
-  };
+  const initialCharacterSats = storedData
+    ? JSON.parse(storedData)
+    : {
+        name: "Gandalf",
+        strength: 10,
+        intelligent: "18",
+        charisma: 16,
+      };
 
   const [characterSats, setCharacterSats] = useState(initialCharacterSats);
 
-  function handleChange(e:any) {
+  const handleChange = (e:any) => {
     setCharacterSats({
       ...characterSats,
       [e.target.name]: e.target.value,
     });
+  };
 
-    localStorage.setItem("characterSats", JSON.stringify({
-      ...characterSats,
-      [e.target.name]: e.target.value,
-    }));
-  }
+  const handleSave = () => {
+    // Guarda datos en el local storage
+    localStorage.setItem("characterSats", JSON.stringify(characterSats));
+    alert("Cambios Guardados en el LocalStorage ✔️");
+  };
 
   return (
     <div className="character-sats-container">
       {storedData ? (
         <p>Variables en el local storage</p>
       ) : (
-        <p>Sin variables en el local storage</p>
+        <p>Sin Variables en el local storage</p>
       )}
 
-      <form>
+      <form onSubmit={(e) => e.preventDefault()}>
         <label>
-          <em>Name :</em>
+          Name:
           <InputText
             type="text"
             name="name"
@@ -47,7 +50,7 @@ export default function CharacterSats() {
         </label>
 
         <label>
-          <em>Strength: </em>
+          Strength:
           <InputText
             type="number"
             name="strength"
@@ -57,8 +60,7 @@ export default function CharacterSats() {
         </label>
 
         <label>
-          
-        <em>Intelligent: </em>
+          Intelligent:
           <InputText
             type="text"
             name="intelligent"
@@ -68,7 +70,7 @@ export default function CharacterSats() {
         </label>
 
         <label>
-          <em>Charisma :</em>
+          Charisma:
           <InputText
             type="number"
             name="charisma"
@@ -76,9 +78,11 @@ export default function CharacterSats() {
             onChange={handleChange}
           />
         </label>
+
+        <button type="button" onClick={handleSave}>
+          Save Changes
+        </button>
       </form>
     </div>
   );
 }
-
-

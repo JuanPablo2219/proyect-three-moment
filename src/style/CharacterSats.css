@@ -35,4 +35,10 @@
     font-weight: bold;
     colorText: #333;
   }
-  
+   button {
+    background-color: rgb(77, 129, 209);
+    width: 50%;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+   }
